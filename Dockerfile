@@ -18,4 +18,3 @@ RUN go get golang.org/x/crypto/bcrypt \
 
 # 
 ADD . /go/src/github.com/bstaijen/helper/
-
