@@ -1,10 +1,9 @@
 package helper
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
-
-	"github.com/sirupsen/logrus"
 )
 
 // PaginationFromRequest return the offset and rows from a request. If not
@@ -21,7 +20,7 @@ func PaginationFromRequest(r *http.Request) (int, int) {
 		offset, err = strconv.Atoi(offsetString)
 		if err != nil {
 			offset = 0
-			logrus.Warnf("offset (%v) is not a number", offsetString)
+			fmt.Printf("[warn] offset (%v) is not a number", offsetString)
 		}
 	}
 	// Prevent negative offset number
@@ -36,7 +35,7 @@ func PaginationFromRequest(r *http.Request) (int, int) {
 		rows, err = strconv.Atoi(rowsString)
 		if err != nil {
 			rows = 10
-			logrus.Warnf("rows (%v) is not a number", rowsString)
+			fmt.Printf("[warn] rows (%v) is not a number", rowsString)
 		}
 	}
 	// Prevent negative rows number
